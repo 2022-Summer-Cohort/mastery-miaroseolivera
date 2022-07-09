@@ -1,6 +1,8 @@
 package com.survivingcodingbootcamp.blog.model;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -12,14 +14,26 @@ public class Post {
     private Topic topic;
     @Lob
     private String content;
+    private String author;
+    @ManyToMany
+    private Collection<Hashtag> hashtags;
 
     protected Post() {
     }
 
-    public Post(String title, Topic topic, String content) {
+    public Post(String title, Topic topic, String author, String content, String hashtag) {
+    }
+
+    public Collection<Hashtag> getHashtags(){
+        return hashtags;
+    }
+
+    public Post(String title, Topic topic, String author, String content, Hashtag...hashtags) {
         this.title = title;
         this.topic = topic;
+        this.author = author;
         this.content = content;
+        this.hashtags = List.of(hashtags);
     }
 
     public Long getId() {
@@ -34,8 +48,20 @@ public class Post {
         return topic;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
     public String getContent() {
         return content;
+    }
+
+    public void addHashtag(Hashtag inHashtag){
+        hashtags.add(inHashtag);
+    }
+
+    public boolean hasHashtag(Hashtag hashtag){
+        return hashtags.contains(hashtag);
     }
 
     @Override
@@ -68,5 +94,9 @@ public class Post {
         result = 31 * result + (topic != null ? topic.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         return result;
+    }
+
+    public void addPostToTopic(Post addedPost){
+        topic.addPostToTopic(addedPost);
     }
 }

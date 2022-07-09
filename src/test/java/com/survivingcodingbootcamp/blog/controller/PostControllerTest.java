@@ -1,8 +1,7 @@
 package com.survivingcodingbootcamp.blog.controller;
 
 import com.survivingcodingbootcamp.blog.model.Post;
-import com.survivingcodingbootcamp.blog.model.Topic;
-import com.survivingcodingbootcamp.blog.repository.PostRepository;
+import com.survivingcodingbootcamp.blog.storage.repository.PostRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;

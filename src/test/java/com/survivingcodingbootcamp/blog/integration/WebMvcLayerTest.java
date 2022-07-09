@@ -2,8 +2,7 @@ package com.survivingcodingbootcamp.blog.integration;
 
 import com.survivingcodingbootcamp.blog.model.Post;
 import com.survivingcodingbootcamp.blog.model.Topic;
-import com.survivingcodingbootcamp.blog.repository.PostRepository;
-import com.survivingcodingbootcamp.blog.repository.TopicRepository;
+import com.survivingcodingbootcamp.blog.storage.repository.PostRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
