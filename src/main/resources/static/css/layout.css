@@ -3,19 +3,24 @@
     padding: 0px;
     box-sizing: border-box;
 }
+
 .header{
     padding: 10px;
 }
+
 .topics{
     padding: 10px;
 }
+
 .topics__nav{
     display:flex;
     flex-direction: column;
 }
+
 .welcome{
     padding: 10px;
 }
+
 @media screen and (min-width:1000px){
     .container{
         width: 85%;

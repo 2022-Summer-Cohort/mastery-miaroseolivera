@@ -3,35 +3,32 @@ package com.survivingcodingbootcamp.blog.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
-public class Topic {
+public class Hashtag {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "topic")
+    @ManyToMany(mappedBy = "hashtags")
     private Collection<Post> posts;
 
-    protected Topic() {
+    public Hashtag(){
     }
 
-    public void addPostToTopic(Post addedPost){
-        posts.add(addedPost);
-    }
-
-    public Topic(String name) {
+    public Hashtag(String name) {
         this.name = name;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Collection<Post> getPosts() {
@@ -39,28 +36,31 @@ public class Topic {
     }
 
     @Override
-    public String toString() {
-        return "Topic{" +
+    public String toString(){
+        return "Hashtag{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals (Object o) {
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
 
-        Topic topic = (Topic) o;
+        Hashtag hashtag = (Hashtag) o;
 
-        if (id != null ? !id.equals(topic.id) : topic.id != null) return false;
-        return name != null ? name.equals(topic.name) : topic.name == null;
+        if(id != null ? !id.equals(hashtag.id) : hashtag.id != null) return false;
+        return name != null ? name.equals(hashtag.name) : hashtag.name == null;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode(){
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    public void addPost(Post post){
     }
 }
